@@ -1,0 +1,21 @@
+body {
+    background: url("../img/thunderdome2.png");
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+p {
+    color: white;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;
+}
+
+
+.divForm {
+    position: relative;
+    float: left;
+}
+
+.boutonForm {
+    position: relative;
+    float: right;
+}
