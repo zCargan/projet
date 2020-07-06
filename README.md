@@ -1,6 +1,6 @@
 # projet
-projet ephec 2020
+projet ephec seconde session 2020
 
 # description
 
-description du projet
+Ce projet 
