@@ -1,0 +1,21 @@
+body {
+    background-image: url("../img/cinema.jpg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+.ajouterFilmDiv {
+    position: relative;
+    float: left;
+    margin: 20px;
+    /*padding: 20px;*/
+    size: 50%;
+}
+
+.ajouterFilmDiv p {
+    color: lightblue;
+}
+
+textarea {
+    size: 100px;
+}
