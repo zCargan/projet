@@ -19,3 +19,31 @@ body {
 textarea {
     size: 100px;
 }
+
+body input {
+    border-radius: 20px;
+}
+
+.listeFilm {
+    float: left;
+    margin: 20px;
+    size: 50%;
+    position: relative;
+}
+
+input {
+    color: lightblue;
+}
+
+th {
+    color: white;
+}
+
+#liste {
+    color: white;
+}
+
+.tableFilm th{
+    border:1px solid white;
+    padding: 14px;
+}
