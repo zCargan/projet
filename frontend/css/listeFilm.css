@@ -25,7 +25,7 @@ body input {
 }
 
 .listeFilm {
-    float: left;
+    float: right;
     margin: 20px;
     size: 50%;
     position: relative;
@@ -43,7 +43,33 @@ th {
     color: white;
 }
 
-.tableFilm th{
+#tableFilm th{
     border:1px solid white;
     padding: 14px;
+}
+
+#tableSerie th{
+    border:1px solid white;
+    padding: 14px;
+    margin: 14px;
+}
+
+.listeSerie {
+    margin: 20px;
+    float: right;
+    size: 50%;
+    position: relative;
+}
+
+.listeSerie th {
+    margin: 5px;
+}
+
+.listeSerie, .listeFilm td {
+    color: lightblue;
+}
+
+td {
+        border: 1px solid lightblue;
+
 }

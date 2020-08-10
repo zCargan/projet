@@ -8,15 +8,15 @@
         <div class="ajouterFilmDiv">
             <fieldset>
             <p><b><u>Films/séries à ajouter :</p></b></u>
-            <form>
+            <form onSubmit='test(this);'>
                 <p>Nom du film/série :</p>
                 <input placeholder="Nom du film/série" id="nomDuFilm">
                 <br>
-                <p> Film ou série?</p>
-                <input type="radio" id="film" name="choix" value="film"> Film
-                <br>
-                <input type="radio" id="serie" name="choix" value="serie"> Série
-                <br>
+                <p> Film ou série?</p> 
+                <select id="fous">
+                    <option value="film">Film</option>
+                    <option value="serie">Série</option>
+                </select>
                 <p>Plateforme de visionnage :</p>
                 <input placeholder="Plateforme" id="plateformDeVisionnage">
                 <br>
@@ -33,17 +33,17 @@
                 </select>
                 <br>
                 <p>Commentaires :</p> 
-                <textarea placeholder="Place ici ton commentaire" rows="5" cols="112" id="commentaire"></textarea>
+                <textarea placeholder="Place ici ton commentaire" rows="5" cols="90" id="commentaire"></textarea>
                 <br>
                 <br>
-                <button type="submit" class="boutonForm" onclick="test()">Ajouter contenu</button>
+                <button type="submit" onclick="test()">Ajouter contenu</button>
             </form>
             </fieldset>
         </div>
         <div class="listeFilm">
             <fieldset>
                 <p id="liste">Liste des films à voir :</p>
-                <table class="tableFilm">
+                <table id="tableFilm">
                     <tr>
                         <th><u>Nom du film  </u></th>
                         <th><u>Plateforme de visionnage  </u></th>
@@ -55,33 +55,21 @@
                     <tr>
                     </tr>
                 </table>
-                <button type="radio"></button>
             </fieldset>
         </div>
         <div class="listeSerie">
             <fieldset class="series">
-                <p>Liste des séries à voir :</p>
+                <p id="liste">Liste des séries à voir :</p>
                 <table id="tableSerie">
-                    <th>
-                        <tr>Nom de la série :</tr>
-                    </th>
-                    <th>
-                        <tr>Plateforme de visionnage :</tr>
-                    </th>
-                    <th>
-                        <tr>Nombre d'étoiles :</tr>
-                    </th>
-                    <th>
-                        <tr>Nombre d'épisodes :</tr>
-                    </th>
-                    <th>
-                        <tr>Origine de la production :</tr>
-                    </th>
-                    <th>
-                        <tr>Commentaire :</tr>
-                    </th>
+                    <tr>
+                        <th><u>Nom de la série  </u></th>
+                        <th><u>Plateforme de visionnage  </u></th>
+                        <th><u>Nombre d'étoiles  </u></th>
+                        <th><u>Nombre d'épisodes  </u></th>
+                        <th><u>Origine de la production  </u></th>
+                        <th><u>Commentaire  </u></th>
+                    </tr>
                 </table>
-                <button type="radio"></button>
             </fieldset>
         </div>
     </body>
