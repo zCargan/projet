@@ -1,5 +1,6 @@
 let chaineTxt = "";
 
+
 function makeTr(array) {
     let chaineTxt = "";
     chaineTxt += "<tr>";
@@ -8,10 +9,12 @@ function makeTr(array) {
         chaineTxt += array[i];
         chaineTxt += "</td>";
     }
+    chaineTxt += "<td id=\"supprimer\">"
+    chaineTxt += "<button onclick=\"supprimer(this)\">Supprimer</button>";
+    chaineTxt += "</td>"
     chaineTxt += "</tr>";
     return chaineTxt;
 }
-
 
 
 function test() {
@@ -31,11 +34,21 @@ function test() {
     arrayInfo.push(origine);
     arrayInfo.push(comm);
     arrayInfo.push(fous);
-    makeTr(arrayInfo);
+    let info = makeTr(arrayInfo);
     if(fous == "serie") {
-        document.getElementById("tableSerie").innerHTML += chaineTxt;    
+        document.getElementById("tableSerie").innerHTML += info;    
     } else {
-        document.getElementById("tableFilm").innerHTML += chaineTxt;
+        document.getElementById("tableFilm").innerHTML += info;
 
     }
+}
+
+
+function supprimer() {
+    document.getElementById("supprimer").style.display ="none";
+}
+
+
+function supprimerCa() {
+    
 }
