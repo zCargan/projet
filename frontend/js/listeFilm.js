@@ -17,6 +17,7 @@ function makeTr(array) {
 }
 
 
+
 function test() {
     //alert("pq");
     let arrayInfo = [];
