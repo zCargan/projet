@@ -1,4 +1,4 @@
-# Projet ephec seconde session 2020
+# Projet ephec 
 
 # Description
 
@@ -6,5 +6,4 @@ Mon projet sera une page internet qui reprend ma liste de films et séries à vo
 Grâce au formulaire, on pourra introduire toutes les informations relatives au film/ à la série.
 Il y aura également un filtreur qui permettra de filtrer le référentiel afin de n’afficher que les films ou que les séries à regarder.
 On aura aussi une partie texte dans le formulaire afin de mettre de brefs commentaires par rapport au contenu que nous souhaitons ajouter.
-Il y aura également la possibilité de supprimer une ligne de la liste de films/séries.
 
