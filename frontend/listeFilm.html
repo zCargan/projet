@@ -3,9 +3,8 @@
     <head>
         <link rel="stylesheet" type="text/css" href="css/listeFilm.css">
         <script src="js/listeFilm.js"></script>
-        
     </head>
-    <body>
+    <body onload="bienvenue()">
         <div class="ajouterFilmDiv">
             <fieldset>
             <p><b><u>Films/séries à ajouter :</p></b></u>
@@ -15,17 +14,19 @@
                 <br>
                 <p> Film ou série?</p> 
                 <select id="fous" required>
-                    <option value="film" selected>Film</option>
-                    <option value="serie">Série</option>
+                    <option value="Film" selected>Film</option>
+                    <option value="Série">Série</option>
                 </select>
                 <p>Plateforme de visionnage :</p>
                 <input placeholder="Plateforme" id="plateformDeVisionnage">
                 <br>
-                <p>Nombre d'étoiles :</p> 
-                <input placeholder="Nombre d'étoile" id="nbrEtoiles">
-                <br>
+
                 <p>Nombre de films/épisode :</p> 
                 <input placeholder="Nombre d'épisode" id="nbrEpisodes">
+                <br>
+
+                <p>Durée du film/épisode a:</p> 
+                <input placeholder="Durée" id="duree">
                 <br>
                 <p>Origine de la production :</p> 
                 <select id="Origine" >
@@ -34,30 +35,42 @@
                 </select>
                 <br>
                 <p>Commentaires :</p> 
-                <textarea placeholder="Place ici ton commentaire" rows="5" cols="90" id="commentaire"></textarea>
+                <textarea placeholder="Place ici ton commentaire" rows="5" cols="40" id="commentaire"></textarea>
                 <br>
                 <br>
-                <button type="submit">Ajouter contenu</button>
+                <button>Ajouter contenu</button>
             </form>
             </fieldset>
         </div>
-        <div class="listeFilm">
-            <fieldset>
-                <p id="liste">Liste des films à voir :</p>
-                <table id="tableFilm">
+        <div class="listeContenu">
+              <fieldset>
+                <p id="liste">Liste de contenu à voir :</p>
+                <p id="liste">Filtrer la liste? </p>
+                <select id="filtre">
+                    <option> film </option>
+                    <option> série </option>
+                </select>
+                <button onclick="filtre()"> Filter !</button>
+                <button onclick="tousAfficher()"> Tout afficher !</button>
+                <!--<button onclick="supprimer()"> Supprimer du contenu</button>-->
+                <br>
+                <br>
+                <table id="tableContenu">
+
                     <tr>
-                        <th><u>Nom du film  </u></th>
+                        <th><u>Nom du contenu  </u></th>
                         <th><u>Plateforme de visionnage  </u></th>
-                        <th><u>Nombre d'étoiles  </u></th>
                         <th><u>Nombre de films  </u></th>
                         <th><u>Origine de la production  </u></th>
+                        <th><u>Durée de visionnage</u></th>
                         <th><u>Commentaire  </u></th>
-                        <th><u>Supprimer?  </u></th>
                     </tr>
                 </table>
-            </fieldset>
+            </fieldset>>
         </div>
         <div class="listeSerie">
+
+<!--           
             <fieldset class="series">
                 <p id="liste">Liste des séries à voir :</p>
                 <table id="tableSerie">
@@ -71,7 +84,8 @@
                         <th><u>Supprimer?  </u></th>
                     </tr>
                 </table>
-            </fieldset>
+            </fieldset> 
+        -->
         </div>
     </body>
 </html>
