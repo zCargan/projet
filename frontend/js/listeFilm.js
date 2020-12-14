@@ -1,3 +1,5 @@
+"use strict";
+
 let chaineTxt = "";
 let tableauContenu = [];
 let arrayArray = [];
@@ -24,10 +26,11 @@ function makeTr(array) {
 //    return tableau;
     return chaineTxt;
 }
-
+let arrayDureeFous = []
+let touteDuree = []
+let longueDuree = touteDuree.sort()
 
 function test() {
-    let arrayDuree = []
     let arrayInfo = [];
     let nomFilm = document.getElementById("nomDuFilm").value;
     let plateform = document.getElementById("plateformDeVisionnage").value;
@@ -46,10 +49,15 @@ function test() {
     arrayInfo.push(comm);
     arrayInfo.push(fous);
     arrayArray.push(arrayInfo);
-    arrayDuree.push(duree);
     console.log(arrayInfo); // contient le tableau des infos
+    let dureeEtFous = []
+    touteDuree.push(duree);
+    dureeEtFous.push(duree);
+    dureeEtFous.push(fous);
+    dureeEtFous.push(nombreEpisodes);
+    arrayDureeFous.push(dureeEtFous);
     let info = makeTr(arrayInfo);
-    let enteteTableau = "<tr><th><u>Nom du contenu  </u></thx   <th><u>Film ou série </u></th><th><u>Plateforme de visionnage  </u></th> <th><u>Nombre de films  </u></th> <th><u>Durée de l'épisode</th> <th><u>Origine de la production  </u></th><th><u>Commentaires  </u></th></tr>"
+    let enteteTableau = "<tr><th><u>Nom du contenu  </u></th>   <th><u>Film ou série </u></th><th><u>Plateforme de visionnage  </u></th> <th><u>Nombre de films  </u></th> <th><u>Durée de l'épisode</th> <th><u>Origine de la production  </u></th><th><u>Commentaires</th></tr>"
 //    <th><u>Supprimer?  </u></th></tr>"
     enteteTableau += "</table></fieldset>";
     tableauContenu.push(info);
@@ -160,5 +168,43 @@ function tousAfficher() {
 */
 
 function bienvenue(){
-    alert("Bienvenue sur ma watchlist de film et de série! Bon visionnage!")
+    alert("Bienvenue sur ma watchlist de film et de série! Enjoy!")
+}
+
+
+function total(a, b){
+    return a + b;
+    
+}
+
+
+
+function duree(){
+    let dureeSerie = 0
+    let dureeFilm = 0
+    for( let i in arrayDureeFous ) {
+        if(arrayDureeFous[i][1] == "Série") {
+            let dureeDeLaSerie = 0
+            dureeDeLaSerie += Number(arrayDureeFous[i][0]);
+            dureeDeLaSerie = dureeDeLaSerie * Number(arrayDureeFous[i][2]);
+            dureeSerie += dureeDeLaSerie
+        }
+        if(arrayDureeFous[i][1] == "Film") {
+            let dureeDesFilms = 0
+            dureeDesFilms += Number(arrayDureeFous[i][0]);
+            dureeDesFilms = dureeDesFilms * Number(arrayDureeFous[i][2]);
+            dureeFilm += dureeDesFilms
+
+        }
+    }
+    alert("Durée total de visionnage : " + total(dureeFilm, dureeSerie) + " minutes, durée total de visionnages séries : " + dureeSerie + " minutes, durée total de visionnage film : " + dureeFilm + " minutes.");
+}   
+
+
+
+function houloulou() {
+    alert("Ce bouton indique la durée du contenu le plus long")
+    let dernierElem = longueDuree.length;
+    alert("Durée la plus longue : " + longueDuree[dernierElem -1] + " minutes, quand même!");
+
 }
