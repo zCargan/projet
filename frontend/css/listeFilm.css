@@ -1,9 +1,17 @@
 body {
-    background-image: url("../img/cinema.jpg");
+    background-image: url("../img/cinema2.jpg");
     background-repeat: no-repeat;
     background-size: 100%;
 }
-
+/*
+.monBouton
+{
+background: url(../img/etoile.gif);
+background-size: 50px;
+background-repeat: no-repeat;
+padding: 22px;
+}
+*/
 .ajouterFilmDiv {
     position: relative;
     float: left;
@@ -14,6 +22,7 @@ body {
 
 .ajouterFilmDiv p {
     color: lightblue;
+
 }
 
 textarea {
@@ -24,26 +33,28 @@ body input {
     border-radius: 20px;
 }
 
-.listeFilm {
-    float: right;
+.listeContenu {
+    float: left;
+    width: 50%;
     margin: 20px;
-    size: 50%;
     position: relative;
+    width: 77%;
 }
 
 input {
-    color: blue;
+    color: lightblue;
 }
 
 th {
     color: white;
+    width: 230px;
 }
 
 #liste {
     color: white;
 }
 
-#tableFilm th{
+#tableContenu th{
     border:1px solid white;
     padding: 14px;
 }
@@ -65,11 +76,26 @@ th {
     margin: 5px;
 }
 
-.listeSerie, .listeFilm td {
+.listeContenu td {
     color: lightblue;
 }
 
 td {
-        border: 1px solid lightblue;
+        border: 1px solid white;
+
+}
+
+td.Série {
+    color: lightseagreen;
+    font-weight: bold;
+    font-size: 15px;
+    text-align: center;
+}
+
+td.Film {
+    color: lightblue;
+    font-weight: bold;
+    font-size: 15px;
+    text-align: center;
 
 }
