@@ -26,13 +26,22 @@ function makeTr(array) {
 //    return tableau;
     return chaineTxt;
 }
+
+
+
 let arrayDureeFous = []
-let touteDuree = []
-let longueDuree = touteDuree.sort()
+let dureeTot = []
+let ensembleDesDurees = []
+
+
 
 function test() {
+
+
+//************************************************************************************// 
+    //création du tableau contenant toute les infos sur le contenu à regarder
     let arrayInfo = [];
-    let nomFilm = document.getElementById("nomDuFilm").value;
+    let nomContenu = document.getElementById("nomDuFilm").value;
     let plateform = document.getElementById("plateformDeVisionnage").value;
     let nombreEpisodes = document.getElementById("nbrEpisodes").value;
     let dureebrut = Number(document.getElementById("duree").value);
@@ -40,7 +49,7 @@ function test() {
     let origine = document.getElementById("Origine").value;
     let comm = document.getElementById("commentaire").value;
     let fous = document.getElementById("fous").value;
-    arrayInfo.push(nomFilm);
+    arrayInfo.push(nomContenu);
     arrayInfo.push(fous);
     arrayInfo.push(plateform);
     arrayInfo.push(nombreEpisodes);
@@ -49,39 +58,42 @@ function test() {
     arrayInfo.push(comm);
     arrayInfo.push(fous);
     arrayArray.push(arrayInfo);
-    console.log(arrayInfo); // contient le tableau des infos
-    let dureeEtFous = []
-    touteDuree.push(duree);
+    ensembleDesDurees.push(duree);
+
+
+
+//************************************************************************************//
+    // utile pour calculer la durée de visionnage nécessaire restant. Infos utilisés dans la fonction duree().
+    let dureeEtFous = [] 
     dureeEtFous.push(duree);
     dureeEtFous.push(fous);
     dureeEtFous.push(nombreEpisodes);
     arrayDureeFous.push(dureeEtFous);
+
+
+
+//************************************************************************************//
+    // nécessaire pour déterminer quel contenu demande le plus de temps pour avoir tout visualiser.
+    let dureeEtNom = []
+    dureeEtNom.push(Number(nombreEpisodes) * Number(duree));
+    dureeEtNom.push(nomContenu);
+    dureeTot.push(dureeEtNom);
+
+
+
+//************************************************************************************//
+    //crée la construction dynamique du tableau contenant les infos sur les contenus.
     let info = makeTr(arrayInfo);
     let enteteTableau = "<tr><th><u>Nom du contenu  </u></th>   <th><u>Film ou série </u></th><th><u>Plateforme de visionnage  </u></th> <th><u>Nombre de films  </u></th> <th><u>Durée de l'épisode</th> <th><u>Origine de la production  </u></th><th><u>Commentaires</th></tr>"
-//    <th><u>Supprimer?  </u></th></tr>"
     enteteTableau += "</table></fieldset>";
     tableauContenu.push(info);
-    //console.log(tableauContenu); // contient le tableau de tous les tableaux d'infos
     let total = enteteTableau + tableauContenu;
-    //console.log(total); // contient le langage html nécéssaire pour réaliser le tableau complété
-    
     document.getElementById("tableContenu").innerHTML = total;
-    
-    
-    /*if(fous == "serie") {
-        tableauSerie.push(info);
-        console.log(tableauSerie);
-            document.getElementById("tableSerie").innerHTML = tableauSerie;
-            alert(
-                "Vous avez " + tableauSerie.length + " séries à regader.");
-    } else {
-        
-        document.getElementById("tableFilm").innerHTML += info;
-
-    }*/
 }
 
-//style="display:none"
+
+
+
 
 function filtre() {
     let tousSerie = document.getElementsByClassName("Série");
@@ -184,15 +196,15 @@ function duree(){
     let dureeFilm = 0
     for( let i in arrayDureeFous ) {
         if(arrayDureeFous[i][1] == "Série") {
-            let dureeDeLaSerie = 0
-            dureeDeLaSerie += Number(arrayDureeFous[i][0]);
-            dureeDeLaSerie = dureeDeLaSerie * Number(arrayDureeFous[i][2]);
+            let dureeDunEpisode = Number(arrayDureeFous[i][0]);
+            let dureeDeLaSerie = dureeDunEpisode * Number(arrayDureeFous[i][2]);
+            //dureeTot.push(dureeDeLaSerie);
             dureeSerie += dureeDeLaSerie
         }
         if(arrayDureeFous[i][1] == "Film") {
-            let dureeDesFilms = 0
-            dureeDesFilms += Number(arrayDureeFous[i][0]);
-            dureeDesFilms = dureeDesFilms * Number(arrayDureeFous[i][2]);
+            let dureeDunFilm= Number(arrayDureeFous[i][0]);
+            let dureeDesFilms = dureeDunFilm * Number(arrayDureeFous[i][2]);
+            //dureeTot.push(dureeDesFilms);
             dureeFilm += dureeDesFilms
 
         }
@@ -203,8 +215,20 @@ function duree(){
 
 
 function houloulou() {
-    alert("Ce bouton indique la durée du contenu le plus long")
-    let dernierElem = longueDuree.length;
-    alert("Durée la plus longue : " + longueDuree[dernierElem -1] + " minutes, quand même!");
+    let max = -Infinity;
+    let index_supp = "";
+    for(let i = 0; i < dureeTot.length; i++) {
+        if(dureeTot[i][0] > max){
+            index_supp = i;
+        }
+    }
+    alert("Le contenu le plus long a regarder est \"" + dureeTot[index_supp][1] + "\" avec une durée totale de " + dureeTot[index_supp][0] + " minutes!");
+}
 
+
+function epPlusLong() {
+    let ensembleDesDureesTriees = "" ;
+    ensembleDesDureesTriees = ensembleDesDurees.sort();
+    //alert("L'épisode dont la durée est la plus longue est de " + ensembleDesDureesTriees[ensembleDesDureesTriees.length-1] + " minutes!");
+    alert(ensembleDesDureesTriees);
 }
