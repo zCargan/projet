@@ -2,44 +2,44 @@
 
 let chaineTxt = "";
 let tableauContenu = [];
-let arrayArray = [];
+let tableau_full_contenu = [];
+let arrayDureeFous = []
+let dureeTot = []
+let ensembleDesDurees = []
 
+//************************************************************************************//
 function makeTr(array) {
+
+    /**
+     * créer dynamiquement un tableau HTML en JS afin de pouvoir l'intégrer à la table 
+     * @param {array} tableau contenant l'ensemble des données sur le contenu à regarder
+     * @return {string} la structure du tableau HTML créer depuis le tableau contenant l'ensembles des infos sur le contenu à regarder
+     */
+
     let chaineTxt = "";
     for(let i = 0; i < array.length -1; i ++) {
         let fous = document.getElementById("fous").value;
         if(fous =="Série") {
             chaineTxt += "<td class=\"Série\" name=\"" + array[0] + "\" id=\"" + array[0] + "\">";
-//"<td class=\"serie\"\"" + array[0] + "\">";
         } else {
             chaineTxt += "<td class=\"Film\" name=\"" + array[0] + "\">";
         }
         chaineTxt += array[i];
         chaineTxt += "</td>";
     }
-//    chaineTxt += "<td id=\"supprimer\">"
-//    chaineTxt += "<button onclick=\"supprimer(" +  array[0] + ")>Supprimer</button>";
-//    chaineTxt += "</td>"
     chaineTxt += "</tr>";
-//    let tableau = enteteTableau + chaineTxt;
-//    console.log(tableau);
-//    return tableau;
     return chaineTxt;
 }
 
 
 
-let arrayDureeFous = []
-let dureeTot = []
-let ensembleDesDurees = []
-
-
-
-function test() {
 
 
 //************************************************************************************// 
-    //création du tableau contenant toute les infos sur le contenu à regarder
+function test() {
+    //création du tableau contenant toute les infos sur le contenu à regarder*
+
+    let arrayArray = new Object();
     let arrayInfo = [];
     let nomContenu = document.getElementById("nomDuFilm").value;
     let plateform = document.getElementById("plateformDeVisionnage").value;
@@ -57,7 +57,14 @@ function test() {
     arrayInfo.push(origine);
     arrayInfo.push(comm);
     arrayInfo.push(fous);
-    arrayArray.push(arrayInfo);
+    arrayArray["Nom"] = nomContenu;
+    arrayArray["FilmOuSérie"] = fous;
+    arrayArray["Plateforme"] = plateform;
+    arrayArray["NbrEpisode"] = nombreEpisodes;
+    arrayArray["Durée"] = duree;
+    arrayArray["Origine"] = origine;
+    arrayArray["Commentaire"] = comm;
+    tableau_full_contenu.push(arrayArray);
     ensembleDesDurees.push(duree);
 
 
@@ -95,11 +102,12 @@ function test() {
 
 
 
+//************************************************************************************//
 function filtre() {
+    //filtre les séries et les films afin de n'afficher que le type de contenu voulu
     let tousSerie = document.getElementsByClassName("Série");
     let tousFilm = document.getElementsByClassName("Film");
     let filtre = document.getElementById("filtre").value;
-    //alert(filtre);
     if( filtre =="série") {
         for(let film of tousFilm) {
             film.style.display = "none";
@@ -119,7 +127,10 @@ function filtre() {
 }
 
 
+
+//************************************************************************************//
 function tousAfficher() {
+    //Affiche tout les types de contenus dans le tableau HTML
     let tousSerie = document.getElementsByClassName("Série");
     let tousFilm = document.getElementsByClassName("Film");
     for( let serie of tousSerie) {
@@ -130,83 +141,43 @@ function tousAfficher() {
     }
 }
 
-/*function tousAfficher() {
-    let contenuASupprimer = prompt("Introduisez le nom du contenu que vous souhaitez supprimer");
-    for(let i = 0; i < arrayArray; i ++) {
-        for(let j = 0; j < arrayArray[i].length; j ++) {
-            if(arrayArray[i][0] = contenuASupprimer) {
-                arrayArray = [];
-            }
-        }
-    }
-    console.log(arrayArray);
-}
-*/
-/*function supprimer(name) {
-//    let ligneASupprimer = document.getElementsByName(name);
-    let contenuASupprimer = prompt("Introduisez le nom du contenu que vous souhaitez supprimer");
-    let ligneASupprimer = document.getElementsByName(contenuASupprimer);
-    console.log(ligneASupprimer);
-    for(let i of ligneASupprimer) {
-        i.style.display ="none";
-    }
-    //console.log(arrayArray);
-    let contenuASupprimer = prompt("Introduisez le nom du contenu que vous souhaitez supprimer");
-    for(let i = 0; i < arrayArray.length; i++) {
-        if(arrayArray[i][0] == contenuASupprimer) {
-            array[i].style.display = "none";
-        }
-    }
-}
-*/
 
 
-/*function makeTr(array) {
-    let chaineTxt = "";
-    for(let i = 0; i < array.length; i ++) { // parcours l'essemble des arrays de contenu
-        for(let j = 0; i < array[i].length; j++) { // parcours les éléments de chaque contenu
-            let fous = document.getElementById("fous").value; // détermmine si il sagit d'un contenu film ou série
-            if(fous =="serie") {
-                chaineTxt += "<td class=\"serie\" name=\"" + array[0] + "\" id=\"" + array[0] + "\">";
-//"<td class=\"serie\"\"" + array[0] + "\">";
-            } else {
-                chaineTxt += "<td class=\"film\" name=\"" + array[0] + "\">";
-            }
-            chaineTxt += array[i][j]; // ajoute à chaineTxt chaque élément de chaque contenu à la chaine de caractère.
-            chaineTxt += "</td>";
-        }
-    }
-}
-*/
-
-function bienvenue(){
-    alert("Bienvenue sur ma watchlist de film et de série! Enjoy!")
-}
 
 
+//************************************************************************************//
 function total(a, b){
+    //Fonction qui effectue la somme de deux nombres.
     return a + b;
     
 }
 
 
 
+
+
+//************************************************************************************//
 function duree(){
+
+    /**
+     * fonction qui calcule la somme total des contenus à visionner.
+     * @param {string} nécessite le type de contenu, à savoir "Film" ou "Série"
+     * @alert {string} créee un alert indiquant la durée total de contenu à regarder en minutes, ainsi que la durée totale de contenu de Film à regarder en minutes ainsi que la durée totale à regarde en minutes de Séries.
+     */
+
+
     let dureeSerie = 0
     let dureeFilm = 0
     for( let i in arrayDureeFous ) {
         if(arrayDureeFous[i][1] == "Série") {
             let dureeDunEpisode = Number(arrayDureeFous[i][0]);
             let dureeDeLaSerie = dureeDunEpisode * Number(arrayDureeFous[i][2]);
-            //dureeTot.push(dureeDeLaSerie);
             dureeSerie += dureeDeLaSerie
         }
         if(arrayDureeFous[i][1] == "Film") {
             let dureeDunFilm= Number(arrayDureeFous[i][0]);
             let dureeDesFilms = dureeDunFilm * Number(arrayDureeFous[i][2]);
-            //dureeTot.push(dureeDesFilms);
             dureeFilm += dureeDesFilms
-
         }
     }
     alert("Durée total de visionnage : " + total(dureeFilm, dureeSerie) + " minutes, durée total de visionnages séries : " + dureeSerie + " minutes, durée total de visionnage film : " + dureeFilm + " minutes.");
@@ -214,21 +185,37 @@ function duree(){
 
 
 
+
+
+//************************************************************************************//
 function houloulou() {
+    //Fonction qui trouve le contenu le plus long à regarder et l'affiche via une alert
     let max = -Infinity;
     let index_supp = "";
     for(let i = 0; i < dureeTot.length; i++) {
         if(dureeTot[i][0] > max){
             index_supp = i;
+            max = dureeTot[i][0];
         }
     }
     alert("Le contenu le plus long a regarder est \"" + dureeTot[index_supp][1] + "\" avec une durée totale de " + dureeTot[index_supp][0] + " minutes!");
 }
 
 
+
+
+//************************************************************************************//
 function epPlusLong() {
-    let ensembleDesDureesTriees = "" ;
-    ensembleDesDureesTriees = ensembleDesDurees.sort();
-    //alert("L'épisode dont la durée est la plus longue est de " + ensembleDesDureesTriees[ensembleDesDureesTriees.length-1] + " minutes!");
-    alert(ensembleDesDureesTriees);
+    //fonction qui affiche la durée de l'épisode le plus long de la liste de visionnage
+    let ensembleTriée = ensembleDesDurees.sort(function(a, b) {return a - b;});
+    alert("L'épisode de plus long de la séléction dure : " + ensembleTriée[ensembleTriée.length-1] + " minutes.");
+}
+
+
+
+
+//************************************************************************************//
+function bienvenue() {
+    // Affiche un peu de doc sur la page HTML à son ouverture
+    alert("Bienvenue dans ma witchlist de films et de série! Enjoy!");
 }
