@@ -4,9 +4,13 @@
         <link rel="stylesheet" type="text/css" href="css/listeFilm.css">
         <script src="js/listeFilm.js"></script>
     </head>
-    <body onload="bienvenue()">
+    <body><!--onload="bienvenue()">-->
         <div class="ajouterFilmDiv">
             <fieldset>
+            <a href="https://www.allocine.fr/film/meilleurs/">Besoin d'idée de film?</a>
+            <br>
+            <br>
+            <a href="https://www.allocine.fr/series/meilleures/">Besoin d'idée de séries?</a>
             <p><b><u>Films/séries à ajouter :</p></b></u>
             <form onSubmit='test(this); return false;'>
                 <p>Nom du film/série :</p>
@@ -26,11 +30,15 @@
                 <br>
 
                 <p>Durée du film/épisode a:</p> 
-                <input placeholder="Durée" id="duree">
+                <input placeholder="Durée en minutes" id="duree">
                 <br>
                 <p>Origine de la production :</p> 
                 <select id="Origine" >
                     <option>Français</option>
+                    <option>Autre</option>
+                    <option>Chinois</option>
+                    <option>Espagnol</option>
+
                     <option selected>Américan</option>
                 </select>
                 <br>
@@ -52,6 +60,9 @@
                 </select>
                 <button onclick="filtre()"> Filter !</button>
                 <button onclick="tousAfficher()"> Tout afficher !</button>
+                <button onclick="duree()">Durée totale (film + série)?</button>
+                <button onclick="houloulou()">Puré la vache c'est long!</button>
+                <button onclick="epPlusLong()">épisode le plus long</button>
                 <!--<button onclick="supprimer()"> Supprimer du contenu</button>-->
                 <br>
                 <br>
