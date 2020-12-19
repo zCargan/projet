@@ -3,15 +3,7 @@ body {
     background-repeat: no-repeat;
     background-size: 100%;
 }
-/*
-.monBouton
-{
-background: url(../img/etoile.gif);
-background-size: 50px;
-background-repeat: no-repeat;
-padding: 22px;
-}
-*/
+
 .ajouterFilmDiv {
     position: relative;
     float: left;
@@ -98,4 +90,21 @@ td.Film {
     font-size: 15px;
     text-align: center;
 
+}
+
+a {
+    color : lightblue;
+    text-decoration: none;
+    border: 1px solid rgb(85, 85, 199);
+    border-radius: 20px;
+    padding : 2px;
+    margin : 5px;
+    background-color:  rgb(85, 85, 199);
+}
+
+
+input, textarea, select, button {
+    background-color: black;
+    color:lightgray;
+    place
 }
